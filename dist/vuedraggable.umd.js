@@ -3452,7 +3452,6 @@ var draggableComponent = {
     },
     $attrs: {
       handler: function handler(newOptionValue) {
-        helper["b" /* console */].log(newOptionValue);
         this.updateOptions(newOptionValue);
       },
       deep: true
@@ -3474,7 +3473,7 @@ var draggableComponent = {
         var value = Object(helper["a" /* camelize */])(property);
 
         if (readonlyProperties.indexOf(value) === -1) {
-          this._sortable.option(value, newOptionValue[property]);
+          this._sortable.options[newOptionValue[property]] = value;
         }
       }
     },

@@ -244,7 +244,6 @@ const draggableComponent = {
 
     $attrs: {
       handler(newOptionValue) {
-        console.log(newOptionValue)
         this.updateOptions(newOptionValue);
       },
       deep: true
@@ -269,7 +268,7 @@ const draggableComponent = {
       for (var property in newOptionValue) {
         const value = camelize(property);
         if (readonlyProperties.indexOf(value) === -1) {
-          this._sortable.option(value, newOptionValue[property]);
+          this._sortable.options[newOptionValue[property]] = value
         }
       }
     },
