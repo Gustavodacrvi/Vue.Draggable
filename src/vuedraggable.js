@@ -149,6 +149,11 @@ const props = {
     required: false,
     default: null
   },
+  multiDragKey: {
+    type: String,
+    required: false,
+    default: null,
+  },
   multiDrag: {
     type: Boolean,
     required: false,
@@ -157,7 +162,7 @@ const props = {
   selectedClass: {
     type: String,
     required: false,
-    default: null
+    default: 'sortable-selected',
   }
 };
 
@@ -248,6 +253,9 @@ const draggableComponent = {
       options.multiDrag = true;
       options.selectedClass = this.selectedClass;
     }
+    if (this.multiDragKey) {
+      options.multiDragKey = this.multiDragKey
+    }
     this._sortable = new Sortable(this.rootContainer, options);
     this.computeIndexes();
   },
@@ -269,6 +277,7 @@ const draggableComponent = {
   watch: {
     options: {
       handler(newOptionValue) {
+        console.log(newOptionValue)
         this.updateOptions(newOptionValue);
       },
       deep: true
