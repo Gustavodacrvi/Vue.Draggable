@@ -2580,8 +2580,8 @@ module.exports = Object.keys || function keys(O) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return removeNode; });
 /* harmony import */ var core_js_modules_es6_regexp_replace__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("a481");
 /* harmony import */ var core_js_modules_es6_regexp_replace__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_regexp_replace__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _home_divinespear_Documents_workspace_private_Vue_Draggable_node_modules_babel_runtime_corejs2_core_js_object_create__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("4aa6");
-/* harmony import */ var _home_divinespear_Documents_workspace_private_Vue_Draggable_node_modules_babel_runtime_corejs2_core_js_object_create__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_home_divinespear_Documents_workspace_private_Vue_Draggable_node_modules_babel_runtime_corejs2_core_js_object_create__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var C_Users_gusta_Desktop_vuedraggable_Vue_Draggable_node_modules_babel_runtime_corejs2_core_js_object_create__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("4aa6");
+/* harmony import */ var C_Users_gusta_Desktop_vuedraggable_Vue_Draggable_node_modules_babel_runtime_corejs2_core_js_object_create__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(C_Users_gusta_Desktop_vuedraggable_Vue_Draggable_node_modules_babel_runtime_corejs2_core_js_object_create__WEBPACK_IMPORTED_MODULE_1__);
 
 
 
@@ -2596,7 +2596,7 @@ function getConsole() {
 var console = getConsole();
 
 function cached(fn) {
-  var cache = _home_divinespear_Documents_workspace_private_Vue_Draggable_node_modules_babel_runtime_corejs2_core_js_object_create__WEBPACK_IMPORTED_MODULE_1___default()(null);
+  var cache = C_Users_gusta_Desktop_vuedraggable_Vue_Draggable_node_modules_babel_runtime_corejs2_core_js_object_create__WEBPACK_IMPORTED_MODULE_1___default()(null);
 
   return function cachedFn(str) {
     var hit = cache[str];
@@ -3369,16 +3369,6 @@ var vuedraggable_props = {
     type: Object,
     required: false,
     default: null
-  },
-  multiDrag: {
-    type: Boolean,
-    required: false,
-    default: false
-  },
-  selectedClass: {
-    type: String,
-    required: false,
-    default: null
   }
 };
 var draggableComponent = {
@@ -3408,18 +3398,6 @@ var draggableComponent = {
   created: function created() {
     if (this.list !== null && this.value !== null) {
       helper["b" /* console */].error("Value and list props are mutually exclusive! Please set one or another.");
-    }
-
-    if (this.element !== "div") {
-      helper["b" /* console */].warn("Element props is deprecated please use tag props instead. See https://github.com/SortableJS/Vue.Draggable/blob/master/documentation/migrate.md#element-props");
-    }
-
-    if (this.options !== undefined) {
-      helper["b" /* console */].warn("Options props is deprecated, add sortable options directly as vue.draggable item, or use v-bind. See https://github.com/SortableJS/Vue.Draggable/blob/master/documentation/migrate.md#options-props");
-    }
-
-    if (this.multiDrag && (this.selectedClass || "") === "") {
-      helper["b" /* console */].warn("selected-class must be set when multi-drag mode. See https://github.com/SortableJS/Sortable/wiki/Dragging-Multiple-Items-in-Sortable#enable-multi-drag");
     }
   },
   mounted: function mounted() {
@@ -3451,12 +3429,6 @@ var draggableComponent = {
     });
 
     !("draggable" in options) && (options.draggable = ">*");
-
-    if (this.multiDrag) {
-      options.multiDrag = true;
-      options.selectedClass = this.selectedClass;
-    }
-
     this._sortable = new external_commonjs_sortablejs_commonjs2_sortablejs_amd_sortablejs_root_Sortable_default.a(this.rootContainer, options);
     this.computeIndexes();
   },
@@ -3480,6 +3452,7 @@ var draggableComponent = {
     },
     $attrs: {
       handler: function handler(newOptionValue) {
+        helper["b" /* console */].log(newOptionValue);
         this.updateOptions(newOptionValue);
       },
       deep: true
