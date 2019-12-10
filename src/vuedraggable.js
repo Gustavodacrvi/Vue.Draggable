@@ -149,21 +149,6 @@ const props = {
     required: false,
     default: null
   },
-  multiDragKey: {
-    type: String,
-    required: false,
-    default: null,
-  },
-  multiDrag: {
-    type: Boolean,
-    required: false,
-    default: false
-  },
-  selectedClass: {
-    type: String,
-    required: false,
-    default: 'sortable-selected',
-  }
 };
 
 const draggableComponent = {
@@ -200,24 +185,6 @@ const draggableComponent = {
         "Value and list props are mutually exclusive! Please set one or another."
       );
     }
-
-    if (this.element !== "div") {
-      console.warn(
-        "Element props is deprecated please use tag props instead. See https://github.com/SortableJS/Vue.Draggable/blob/master/documentation/migrate.md#element-props"
-      );
-    }
-
-    if (this.options !== undefined) {
-      console.warn(
-        "Options props is deprecated, add sortable options directly as vue.draggable item, or use v-bind. See https://github.com/SortableJS/Vue.Draggable/blob/master/documentation/migrate.md#options-props"
-      );
-    }
-
-    if (this.multiDrag && (this.selectedClass || "") === "") {
-      console.warn(
-        "selected-class must be set when multi-drag mode. See https://github.com/SortableJS/Sortable/wiki/Dragging-Multiple-Items-in-Sortable#enable-multi-drag"
-      );
-    }
   },
 
   mounted() {
@@ -249,13 +216,6 @@ const draggableComponent = {
       }
     });
     !("draggable" in options) && (options.draggable = ">*");
-    if (this.multiDrag) {
-      options.multiDrag = true;
-      options.selectedClass = this.selectedClass;
-    }
-    if (this.multiDragKey) {
-      options.multiDragKey = this.multiDragKey
-    }
     this._sortable = new Sortable(this.rootContainer, options);
     this.computeIndexes();
   },
