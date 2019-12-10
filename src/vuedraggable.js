@@ -277,7 +277,6 @@ const draggableComponent = {
   watch: {
     options: {
       handler(newOptionValue) {
-        console.log(newOptionValue)
         this.updateOptions(newOptionValue);
       },
       deep: true
@@ -285,6 +284,7 @@ const draggableComponent = {
 
     $attrs: {
       handler(newOptionValue) {
+        console.log(newOptionValue)
         this.updateOptions(newOptionValue);
       },
       deep: true
